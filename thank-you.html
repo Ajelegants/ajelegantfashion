@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AJELEGANTFASHION | Thank You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#060606;--surface:#121212;--gold:#d4af37;--gold-soft:#f4de8f;--text:#f8f2e5;--muted:#bfb6a2;--ok:#4fe0ad}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0%, rgba(212,175,55,.16), transparent 35%),var(--bg);min-height:100vh;display:grid;place-items:center;padding:18px}
+    .box{max-width:780px;width:100%;background:var(--surface);border:1px solid rgba(212,175,55,.26);border-radius:20px;padding:26px;text-align:center;box-shadow:0 18px 38px rgba(0,0,0,.48);animation:rise .7s ease}
+    .ok{font-size:3rem;animation:bounce 1.8s infinite}
+    h1{font:700 clamp(1.7rem,4.5vw,2.7rem) Cinzel,serif;color:var(--gold-soft)}
+    p{margin-top:8px;color:var(--muted)}
+    .good{color:var(--ok);font-weight:700;margin-top:8px}
+    .order{margin-top:18px;text-align:left;background:#0e0e0e;border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:12px}
+    .order li{list-style:none;display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(212,175,55,.16);color:var(--muted)}
+    .order li strong{color:var(--text)}.order li:last-child{border-bottom:none}
+    .row{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .btn{text-decoration:none;padding:11px 16px;border-radius:999px;font-weight:700;transition:.25s}
+    .gold{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#130f00}
+    .gold:hover{transform:scale(1.05)}
+    .ghost{border:1px solid rgba(212,175,55,.45);background:rgba(212,175,55,.08);color:var(--gold-soft)}
+    .ghost:hover{background:rgba(212,175,55,.15)}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '951370043895258');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=951370043895258&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <main class="box">
+    <div class="ok">🎉</div>
+    <h1>Thank You for Ordering</h1>
+    <p>Your premium order is confirmed. We will contact you shortly for delivery.</p>
+    <div class="good">✅ Checkout data received successfully.</div>
+    <ul class="order" id="orderDetails">
+      <li><span>Name</span><strong>-</strong></li>
+      <li><span>Phone</span><strong>-</strong></li>
+      <li><span>Product</span><strong>-</strong></li>
+      <li><span>Quantity</span><strong>-</strong></li>
+      <li><span>Payment</span><strong>-</strong></li>
+    </ul>
+    <div class="row">
+      <a href="product.html" class="btn gold">Continue Shopping</a>
+      <a href="index.html" class="btn ghost">Back to Home</a>
+    </div>
+  </main>
+
+  <script>
+    const details = document.getElementById('orderDetails');
+    const raw = sessionStorage.getItem('aje_order');
+    if (raw) {
+      const order = JSON.parse(raw);
+      details.innerHTML = `
+        <li><span>Name</span><strong>${order.name || '-'}</strong></li>
+        <li><span>Phone</span><strong>${order.phone || '-'}</strong></li>
+        <li><span>Product</span><strong>${order.product || '-'}</strong></li>
+        <li><span>Quantity</span><strong>${order.quantity || '-'}</strong></li>
+        <li><span>Payment</span><strong>${order.payment || '-'}</strong></li>
+      `;
+
+      fbq('track', 'Lead', {
+        content_name: order.product || 'Premium Order',
+        value: 1,
+        currency: 'BDT'
+      });
+    }
+  </script>
+</body>
+</html>
