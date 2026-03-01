@@ -1,0 +1,13 @@
+[[plugins]]
+  package = "netlify-plugin-a11y"
+  [plugins.inputs]
+    # pa11y এর টাইমাউট ৩০ সেকেন্ড থেকে বাড়িয়ে ৬০ সেকেন্ড করা হলো
+    pa11yOptions = { timeout = 60000 }
+    # শুধুমাত্র প্রধান পেজটি স্ক্যান করার জন্য সেট করা হলো যাতে সময় কম লাগে
+    pages = ["/index.html"]
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css"
