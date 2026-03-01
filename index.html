@@ -103,18 +103,28 @@
     .info h3 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 10px; font-family: 'Outfit'; color: #efefef; }
     .price { font-family: 'Bodoni Moda'; color: var(--accent-gold); font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
 
+    .action-btns { display: flex; flex-direction: column; gap: 10px; }
+    .order-btn { background: var(--accent-gold); color: #000; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; padding: 12px; border-radius: 8px; cursor: pointer; border: none; letter-spacing: 1px; }
     .ai-desc-btn {
       background: rgba(157, 80, 187, 0.1); border: 1px solid var(--accent-purple); color: var(--accent-purple);
-      font-size: 0.65rem; text-transform: uppercase; padding: 10px 20px; border-radius: 25px; cursor: pointer;
+      font-size: 0.65rem; text-transform: uppercase; padding: 10px 20px; border-radius: 8px; cursor: pointer;
       transition: 0.3s; font-weight: 700; letter-spacing: 1px;
     }
     .ai-desc-btn:hover { background: var(--accent-purple); color: #fff; }
 
+    /* --- ORDER FORM SECTION --- */
+    .form-section { padding: 6rem 5%; background: #080808; border-top: 1px solid var(--border); }
+    .form-container { max-width: 600px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border); padding: 3rem; border-radius: 24px; }
+    .form-container h2 { font-family: 'Bodoni Moda'; font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: var(--accent-gold); }
+    .input-group { margin-bottom: 1.5rem; }
+    .input-group label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 8px; }
+    .input-group input, .input-group select { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: #fff; border-radius: 12px; transition: 0.3s; }
+    .input-group input:focus { border-color: var(--accent-gold); }
+
     /* --- SOCIAL BAR --- */
     .social-section {
         padding: 6rem 5%;
-        background: #080808;
-        border-top: 1px solid var(--border);
+        background: #050505;
         text-align: center;
     }
     .social-container {
@@ -125,8 +135,8 @@
         margin-top: 3rem;
     }
     .social-card {
-        background: #111;
-        border: 1px solid #222;
+        background: #0d0d0d;
+        border: 1px solid #1a1a1a;
         padding: 2.5rem;
         border-radius: 20px;
         width: 300px;
@@ -137,13 +147,10 @@
     .social-card:hover {
         border-color: var(--accent-gold);
         transform: translateY(-10px);
-        background: #151515;
     }
     .social-card i { font-size: 2.5rem; display: block; margin-bottom: 1.5rem; }
     .social-card.fb i { color: #1877F2; }
     .social-card.wa i { color: #25D366; }
-    .social-card h4 { font-family: 'Outfit'; font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .social-card p { color: #888; font-size: 0.85rem; }
 
     /* --- AI CHAT BOT --- */
     #ai-trigger {
@@ -182,7 +189,6 @@
       header .nav-links { display: none; }
     }
   </style>
-  <!-- Simple Icon Font for Social -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
@@ -210,8 +216,8 @@
     <div class="brand"><h1>AJ Elegant</h1></div>
     <div class="nav-links">
       <a href="#catalogue">Catalogue</a>
+      <a href="#order-section">Order Now</a>
       <a href="#connect">Connect</a>
-      <a href="https://wa.me/8801722123003" class="btn" style="padding: 0.7rem 1.5rem;">Order Now</a>
     </div>
   </header>
 
@@ -234,23 +240,59 @@
 
     <div class="grid" id="productGrid"></div>
 
+    <!-- Order Form Section -->
+    <section id="order-section" class="form-section">
+        <div class="form-container">
+            <h2>প্রিমিয়াম অর্ডার করুন</h2>
+            <form id="checkoutForm">
+                <div class="input-group">
+                    <label>আপনার নাম</label>
+                    <input type="text" id="custName" required placeholder="পুরো নাম লিখুন">
+                </div>
+                <div class="input-group">
+                    <label>ফোন নম্বর</label>
+                    <input type="tel" id="custPhone" required placeholder="০১৭xxxxxxxx">
+                </div>
+                <div class="input-group">
+                    <label>পণ্য নির্বাচন করুন</label>
+                    <select id="selectedProduct">
+                        <option>Luxury Silk Panjabi</option>
+                        <option>Premium Gold Bangles</option>
+                        <option>Regal Jamdani Saree</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label>পরিমাণ</label>
+                        <input type="number" id="custQty" value="1" min="1">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>পেমেন্ট</label>
+                        <select id="custPayment">
+                            <option>ক্যাশ অন ডেলিভারি</option>
+                            <option>বিকাশ / নগদ</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">অর্ডার কনফার্ম করুন</button>
+            </form>
+        </div>
+    </section>
+
     <section id="connect" class="social-section">
         <h2 style="font-family: 'Bodoni Moda'; font-size: 3rem; margin-bottom: 1rem;">Let's Connect</h2>
         <p style="color: #666;">আমাদের নতুন অফার এবং আপডেট পেতে যুক্ত থাকুন</p>
         
         <div class="social-container">
-            <!-- Facebook Link (Replace URL with your page) -->
-            <a href="https://www.facebook.com/yourpagename" target="_blank" class="social-card fb">
+            <a href="https://www.facebook.com/ajelegantfashion" target="_blank" class="social-card fb">
                 <i class="fab fa-facebook-f"></i>
                 <h4>Facebook</h4>
-                <p>আমাদের অফিসিয়াল ফেসবুক পেজে যুক্ত হোন এবং রিভিউ দেখুন।</p>
+                <p>আমাদের অফিসিয়াল ফেসবুক পেজে যুক্ত হোন।</p>
             </a>
-
-            <!-- WhatsApp Business Link -->
             <a href="https://wa.me/8801722123003" target="_blank" class="social-card wa">
                 <i class="fab fa-whatsapp"></i>
-                <h4>WhatsApp Business</h4>
-                <p>সরাসরি অর্ডার করতে বা কাস্টমাইজেশন নিয়ে কথা বলতে মেসেজ দিন।</p>
+                <h4>WhatsApp</h4>
+                <p>সরাসরি অর্ডার করতে মেসেজ দিন।</p>
             </a>
         </div>
     </section>
@@ -276,6 +318,26 @@
       { id: 3, name: "Stone Studded Bangles", price: 750, cat: "bangles", img: "ajfashion (3).jpg" },
       { id: 4, name: "Handcrafted Jewelry Set", price: 1200, cat: "bangles", img: "ajfashion (4).jpg" }
     ];
+
+    // Form Redirection Logic
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const orderData = {
+            name: document.getElementById('custName').value,
+            phone: document.getElementById('custPhone').value,
+            product: document.getElementById('selectedProduct').value,
+            quantity: document.getElementById('custQty').value,
+            payment: document.getElementById('custPayment').value
+        };
+        sessionStorage.setItem('aje_order', JSON.stringify(orderData));
+        window.location.href = 'thank-you.html';
+    });
+
+    function scrollToOrder(pName) {
+        const select = document.getElementById('selectedProduct');
+        select.value = pName;
+        document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
+    }
 
     async function callGemini(prompt, systemPrompt = "") {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
@@ -346,7 +408,10 @@
           <div class="info">
             <h3>${p.name}</h3>
             <div class="price">৳ ${p.price.toLocaleString()}</div>
-            <button class="ai-desc-btn" onclick="showAiDescription(${p.id})">✨ AI বর্ণনা দেখুন</button>
+            <div class="action-btns">
+                <button class="order-btn" onclick="scrollToOrder('${p.name}')">Buy Now</button>
+                <button class="ai-desc-btn" onclick="showAiDescription(${p.id})">✨ AI বর্ণনা দেখুন</button>
+            </div>
           </div>
         `;
         grid.appendChild(card);
