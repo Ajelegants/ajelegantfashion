@@ -1,0 +1,29 @@
+name: 🐛 Bug Report
+about: প্রজেক্টের কোনো সমস্যা বা ত্রুটি রিপোর্ট করুন।
+title: '[BUG] '
+labels: bug
+assignees: ''
+
+সমস্যার বর্ণনা (Describe the bug)
+ঠিক কী সমস্যা হচ্ছে তা সংক্ষেপে লিখুন।
+
+কিভাবে সমস্যাটি দেখা যাবে (To Reproduce)
+ধাপগুলো লিখুন:
+
+ক্লিক করুন '...'
+
+স্ক্রল করুন '...'
+
+দেখুন এই ত্রুটিটি '...'
+
+প্রত্যাশিত ফলাফল (Expected behavior)
+আপনি কী আশা করেছিলেন যে ঘটবে?
+
+স্ক্রিনশট (Screenshots)
+সম্ভব হলে সমস্যার একটি ছবি এখানে দিন।
+
+ডিভাইস ইনফো (Desktop/Mobile):
+
+OS: [e.g. Windows, Android]
+
+Browser: [e.g. Chrome, Safari]
